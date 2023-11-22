@@ -1,0 +1,27 @@
+{
+  "name": "djskit",
+  "version": "0.0.0-beta",
+  "description": "A kit to easily handle your commands and events in your DiscordJS projects!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rtxeon/djskit.git"
+  },
+  "keywords": [
+    "discord.js",
+    "djs",
+    "discordjs",
+    "command-handler",
+    "cmd-handler",
+    "event-handler"
+  ],
+  "author": "Rtxeon",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/Rtxeon/djskit/issues"
+  },
+  "homepage": "https://djskit.js.org"
+}
