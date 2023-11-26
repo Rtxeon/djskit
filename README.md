@@ -14,15 +14,16 @@
 <a href="https://npmjs.com/djskit">
   <img src="https://img.shields.io/npm/dt/djskit?style=for-the-badge" alt="downloadsBadge" />
 </a>
-
 <a href="https://npmjs.com/djskit">
-  <img src="https://img.shields.io/npm/v/djskit?style=for-the-badge" alt="versionBadge" />
+  <img src="https://img.shields.io/npm/v/djskit.svg?style=for-the-badge" alt="versionBadge" />
 </a>
-
+<a href="https://djskit.js.org/">
+<img src="https://img.shields.io/badge/DJSKit-Documentation-406dbc?style=for-the-badge" >
+</a>
 </p>
 
 <p align="center">
- <a  href="https://nodei.co/npm/ultrax/"><img  src="https://nodei.co/npm/djskit.png?downloads=true&stars=true"  alt="NPM info"  /></a>
+ <a  href="https://nodei.co/npm/djskit/"><img  src="https://nodei.co/npm/djskit.png?downloads=true&stars=true"  alt="NPM info"  /></a>
  </p>
 
 ## 📥 Install
@@ -38,8 +39,8 @@ $ npm install djskit
 You can enable debug to try to know why an event is not working:
 
 ```js
-const logs = require('discord-logs');
-logs(client, {
+const { extendedEvents } = require('djskit');
+extendedEvents(client, {
     debug: true
 });
 ```

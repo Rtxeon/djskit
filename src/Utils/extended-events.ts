@@ -9,7 +9,7 @@ import {
     handleVoiceStateUpdateEvent,
     handleChannelUpdateEvent,
     handleThreadChannelUpdateEvent,
-} from './handler/events';
+} from '../Handler/Events';
 
 let eventRegistered = false;
 

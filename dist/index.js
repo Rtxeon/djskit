@@ -11,6 +11,10 @@ var __esm = (fn, res) => function __init() {
 var __commonJS = (cb, mod) => function __require() {
   return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
 };
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
     for (let key of __getOwnPropNames(from))
@@ -27,6 +31,7 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
   mod
 ));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
 // node_modules/tsup/assets/cjs_shims.js
 var init_cjs_shims = __esm({
@@ -35,7 +40,7 @@ var init_cjs_shims = __esm({
   }
 });
 
-// src/handler/events/guildMemberUpdate.ts
+// src/Handler/Events/guildMemberUpdate.ts
 async function handleGuildMemberUpdateEvent(client, oldMember, newMember) {
   let emitted = false;
   if (!oldMember.partial) {
@@ -87,13 +92,13 @@ async function handleGuildMemberUpdateEvent(client, oldMember, newMember) {
   }
 }
 var init_guildMemberUpdate = __esm({
-  "src/handler/events/guildMemberUpdate.ts"() {
+  "src/Handler/Events/guildMemberUpdate.ts"() {
     "use strict";
     init_cjs_shims();
   }
 });
 
-// src/handler/events/guildUpdate.ts
+// src/Handler/Events/guildUpdate.ts
 async function handleGuildUpdateEvent(client, oldGuild, newGuild) {
   let emitted = false;
   if (oldGuild.premiumTier < newGuild.premiumTier) {
@@ -157,13 +162,13 @@ async function handleGuildUpdateEvent(client, oldGuild, newGuild) {
   }
 }
 var init_guildUpdate = __esm({
-  "src/handler/events/guildUpdate.ts"() {
+  "src/Handler/Events/guildUpdate.ts"() {
     "use strict";
     init_cjs_shims();
   }
 });
 
-// src/handler/events/presenceUpdate.ts
+// src/Handler/Events/presenceUpdate.ts
 async function handlePresenceUpdateEvent(client, oldPresence, newPresence) {
   if (!oldPresence)
     return;
@@ -181,13 +186,13 @@ async function handlePresenceUpdateEvent(client, oldPresence, newPresence) {
   }
 }
 var init_presenceUpdate = __esm({
-  "src/handler/events/presenceUpdate.ts"() {
+  "src/Handler/Events/presenceUpdate.ts"() {
     "use strict";
     init_cjs_shims();
   }
 });
 
-// src/handler/events/roleUpdate.ts
+// src/Handler/Events/roleUpdate.ts
 async function handleRoleUpdateEvent(client, oldRole, newRole) {
   let emitted = false;
   if (oldRole.rawPosition !== newRole.rawPosition) {
@@ -203,13 +208,13 @@ async function handleRoleUpdateEvent(client, oldRole, newRole) {
   }
 }
 var init_roleUpdate = __esm({
-  "src/handler/events/roleUpdate.ts"() {
+  "src/Handler/Events/roleUpdate.ts"() {
     "use strict";
     init_cjs_shims();
   }
 });
 
-// src/handler/events/userUpdate.ts
+// src/Handler/Events/userUpdate.ts
 async function handleUserUpdateEvent(client, oldUser, newUser) {
   let emitted = false;
   if (!oldUser.partial) {
@@ -235,13 +240,13 @@ async function handleUserUpdateEvent(client, oldUser, newUser) {
   }
 }
 var init_userUpdate = __esm({
-  "src/handler/events/userUpdate.ts"() {
+  "src/Handler/Events/userUpdate.ts"() {
     "use strict";
     init_cjs_shims();
   }
 });
 
-// src/handler/events/voiceStateUpdate.ts
+// src/Handler/Events/voiceStateUpdate.ts
 async function handleVoiceStateUpdateEvent(client, oldState, newState) {
   let emitted = false;
   const oldMember = oldState.member;
@@ -291,13 +296,13 @@ async function handleVoiceStateUpdateEvent(client, oldState, newState) {
   }
 }
 var init_voiceStateUpdate = __esm({
-  "src/handler/events/voiceStateUpdate.ts"() {
+  "src/Handler/Events/voiceStateUpdate.ts"() {
     "use strict";
     init_cjs_shims();
   }
 });
 
-// src/handler/events/messageUpdate.ts
+// src/Handler/Events/messageUpdate.ts
 async function handleMessageUpdateEvent(client, oldMessage, newMessage) {
   let emitted = false;
   if (!oldMessage.partial && !newMessage.partial) {
@@ -315,13 +320,13 @@ async function handleMessageUpdateEvent(client, oldMessage, newMessage) {
   }
 }
 var init_messageUpdate = __esm({
-  "src/handler/events/messageUpdate.ts"() {
+  "src/Handler/Events/messageUpdate.ts"() {
     "use strict";
     init_cjs_shims();
   }
 });
 
-// src/handler/events/guildChannel.ts
+// src/Handler/Events/guildChannel.ts
 async function handleChannelUpdateEvent(client, oldChannel, newChannel) {
   let emitted = false;
   if (Object.prototype.hasOwnProperty.call(oldChannel, "guild")) {
@@ -350,14 +355,14 @@ async function handleChannelUpdateEvent(client, oldChannel, newChannel) {
 }
 var import_discord;
 var init_guildChannel = __esm({
-  "src/handler/events/guildChannel.ts"() {
+  "src/Handler/Events/guildChannel.ts"() {
     "use strict";
     init_cjs_shims();
     import_discord = require("discord.js");
   }
 });
 
-// src/handler/events/threadUpdate.ts
+// src/Handler/Events/threadUpdate.ts
 async function handleThreadChannelUpdateEvent(client, oldThread, newThread) {
   let emitted = false;
   if (Object.prototype.hasOwnProperty.call(oldThread, "guild")) {
@@ -397,15 +402,15 @@ async function handleThreadChannelUpdateEvent(client, oldThread, newThread) {
   }
 }
 var init_threadUpdate = __esm({
-  "src/handler/events/threadUpdate.ts"() {
+  "src/Handler/Events/threadUpdate.ts"() {
     "use strict";
     init_cjs_shims();
   }
 });
 
-// src/handler/events/index.ts
-var init_events = __esm({
-  "src/handler/events/index.ts"() {
+// src/Handler/Events/index.ts
+var init_Events = __esm({
+  "src/Handler/Events/index.ts"() {
     "use strict";
     init_cjs_shims();
     init_guildMemberUpdate();
@@ -420,13 +425,13 @@ var init_events = __esm({
   }
 });
 
-// src/extended-events.ts
+// src/Utils/extended-events.ts
 var require_extended_events = __commonJS({
-  "src/extended-events.ts"(exports2, module2) {
+  "src/Utils/extended-events.ts"(exports, module2) {
     "use strict";
     init_cjs_shims();
     var import_discord2 = require("discord.js");
-    init_events();
+    init_Events();
     var eventRegistered = false;
     module2.exports = async (client, options) => {
       if (eventRegistered)
@@ -510,6 +515,55 @@ var require_extended_events = __commonJS({
 });
 
 // src/index.ts
+var src_exports = {};
+__export(src_exports, {
+  createSourceBin: () => createSourceBin,
+  extendedEvents: () => import_extended_events.default,
+  sleep: () => sleep
+});
+module.exports = __toCommonJS(src_exports);
+init_cjs_shims();
+
+// src/Functions/index.ts
+init_cjs_shims();
+
+// src/Functions/extraEvents.ts
 init_cjs_shims();
 var import_extended_events = __toESM(require_extended_events());
-module.exports = import_extended_events.default;
+
+// src/Functions/createBin.ts
+init_cjs_shims();
+var import_axios = __toESM(require("axios"));
+async function createSourceBin(Options) {
+  const { code } = Options;
+  if (!code)
+    throw new Error(`[Missing-Argument] Missing argument 'code' [Usage: createSourceBin(code)]`);
+  if (typeof code !== "string")
+    throw new TypeError(`Expected type 'string', got '${typeof code}'`);
+  try {
+    const response = await import_axios.default.post("https://sourceb.in/api/bins", {
+      files: [{
+        content: code
+      }]
+    });
+    return `https://sourceb.in/${response.data.key}`;
+  } catch (e) {
+    if (e instanceof Error) {
+      throw new Error(`[SourceBin-API-Error] ${e.name} - ${e.message}`);
+    } else {
+      throw e;
+    }
+  }
+}
+
+// src/Functions/sleep.ts
+init_cjs_shims();
+function sleep(options) {
+  return new Promise((resolve) => setTimeout(resolve, options.ms));
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  createSourceBin,
+  extendedEvents,
+  sleep
+});

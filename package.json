@@ -1,6 +1,6 @@
 {
   "name": "djskit",
-  "version": "0.0.6-pre",
+  "version": "0.0.7-pre",
   "description": "DJSKit - Elevate your Discord bot from ordinary to extraordinary with our versatile toolkit!",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -29,10 +29,11 @@
   },
   "homepage": "https://djskit.js.org",
   "dependencies": {
+    "axios": "^1.6.2",
+    "discord.js": "^14.14.1",
     "dotenv": "^16.3.1"
   },
   "devDependencies": {
-    "discord.js": "^14.14.1",
     "tsup": "^8.0.1",
     "typescript": "^5.3.2"
   }
