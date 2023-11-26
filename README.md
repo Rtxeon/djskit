@@ -7,9 +7,13 @@
 <p>DJSKit - Elevate your Discord bot from ordinary to extraordinary with our versatile toolkit!</p>
 </center>
 <p align="center">
+<a href="https://npmjs.com/djskit">
+  <img src="https://img.shields.io/npm/dt/djskit?style=for-the-badge" alt="downloadsBadge" />
+</a>
 
-[![downloadsBadge](https://img.shields.io/npm/dt/djskit?style=for-the-badge)](https://npmjs.com/discord-logs)
-[![versionBadge](https://img.shields.io/npm/v/djskit?style=for-the-badge)](https://npmjs.com/discord-logs)
+<a href="https://npmjs.com/djskit">
+  <img src="https://img.shields.io/npm/v/djskit?style=for-the-badge" alt="versionBadge" />
+</a>
 
 </p>
 
