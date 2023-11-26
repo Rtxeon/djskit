@@ -1,10 +1,12 @@
 {
   "name": "djskit",
-  "version": "0.0.0-beta",
-  "description": "A kit to easily handle your commands and events in your DiscordJS projects!",
-  "main": "index.js",
+  "version": "0.0.0-pre",
+  "description": "DJSKit - Elevate your Discord bot from ordinary to extraordinary with our versatile toolkit!",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsup"
   },
   "repository": {
     "type": "git",
@@ -13,15 +15,25 @@
   "keywords": [
     "discord.js",
     "djs",
+    "djskit",
+    "djs-kit",
     "discordjs",
-    "command-handler",
-    "cmd-handler",
-    "event-handler"
+    "discord-events",
+    "discord-logs",
+    "discord-utility"
   ],
   "author": "Rtxeon",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/Rtxeon/djskit/issues"
   },
-  "homepage": "https://djskit.js.org"
+  "homepage": "https://djskit.js.org",
+  "dependencies": {
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "discord.js": "^14.14.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.2"
+  }
 }

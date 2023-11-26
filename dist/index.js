@@ -1,0 +1,515 @@
+"use strict";
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+};
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+
+// node_modules/tsup/assets/cjs_shims.js
+var init_cjs_shims = __esm({
+  "node_modules/tsup/assets/cjs_shims.js"() {
+    "use strict";
+  }
+});
+
+// src/handler/events/guildMemberUpdate.ts
+async function handleGuildMemberUpdateEvent(client, oldMember, newMember) {
+  let emitted = false;
+  if (!oldMember.partial) {
+    if (!oldMember.premiumSince && newMember.premiumSince) {
+      client.emit("guildMemberBoost", newMember);
+      emitted = true;
+    }
+    if (oldMember.premiumSince && !newMember.premiumSince) {
+      client.emit("guildMemberUnboost", newMember);
+      emitted = true;
+    }
+    const addedRoles = [];
+    newMember.roles.cache.forEach((role) => {
+      if (!oldMember.roles.cache.has(role.id))
+        addedRoles.push(role);
+    });
+    addedRoles.forEach((role) => {
+      client.emit("guildMemberRoleAdd", oldMember, role);
+      emitted = true;
+    });
+    const removedRoles = [];
+    oldMember.roles.cache.forEach((role) => {
+      if (!newMember.roles.cache.has(role.id))
+        removedRoles.push(role);
+    });
+    removedRoles.forEach((role) => {
+      client.emit("guildMemberRoleRemove", oldMember, role);
+      emitted = true;
+    });
+    if (oldMember.nickname !== newMember.nickname) {
+      client.emit("guildMemberNicknameUpdate", newMember, oldMember.nickname, newMember.nickname);
+      emitted = true;
+    }
+    if (oldMember.communicationDisabledUntil !== newMember.communicationDisabledUntil) {
+      client.emit("guildMemberTimeout", newMember, newMember.communicationDisabledUntil);
+      emitted = true;
+    }
+    if (oldMember.communicationDisabledUntil !== newMember.communicationDisabledUntil) {
+      client.emit("guildMemberTimeout", newMember, newMember.communicationDisabledUntil);
+      emitted = true;
+    }
+    if (oldMember.pending !== newMember.pending) {
+      client.emit("guildMemberEntered", newMember);
+      emitted = true;
+    }
+  }
+  if (!emitted) {
+    client.emit("unhandledGuildMemberUpdate", oldMember, newMember);
+  }
+}
+var init_guildMemberUpdate = __esm({
+  "src/handler/events/guildMemberUpdate.ts"() {
+    "use strict";
+    init_cjs_shims();
+  }
+});
+
+// src/handler/events/guildUpdate.ts
+async function handleGuildUpdateEvent(client, oldGuild, newGuild) {
+  let emitted = false;
+  if (oldGuild.premiumTier < newGuild.premiumTier) {
+    client.emit("guildBoostLevelUp", newGuild, oldGuild.premiumTier, newGuild.premiumTier);
+    emitted = true;
+  }
+  if (oldGuild.premiumTier > newGuild.premiumTier) {
+    client.emit("guildBoostLevelDown", oldGuild, newGuild);
+    emitted = true;
+  }
+  if (!oldGuild.banner && newGuild.banner) {
+    client.emit("guildBannerAdd", newGuild, newGuild.bannerURL());
+    emitted = true;
+  }
+  if (!oldGuild.afkChannel && newGuild.afkChannel) {
+    client.emit("guildAfkChannelAdd", newGuild, newGuild.afkChannel);
+    emitted = true;
+  }
+  if (!oldGuild.vanityURLCode && newGuild.vanityURLCode) {
+    client.emit("guildVanityURLAdd", newGuild, newGuild.vanityURLCode);
+    emitted = true;
+  }
+  if (oldGuild.vanityURLCode && !newGuild.vanityURLCode) {
+    client.emit("guildVanityURLRemove", newGuild, oldGuild.vanityURLCode);
+    emitted = true;
+  }
+  if (oldGuild.vanityURLCode !== newGuild.vanityURLCode) {
+    client.emit("guildVanityURLUpdate", newGuild, oldGuild.vanityURLCode, newGuild.vanityURLCode);
+    emitted = true;
+  }
+  if (oldGuild.features.length !== newGuild.features.length) {
+    client.emit("guildFeaturesUpdate", oldGuild, newGuild);
+    emitted = true;
+  }
+  if (oldGuild.nameAcronym !== newGuild.nameAcronym) {
+    client.emit("guildAcronymUpdate", oldGuild, newGuild);
+    emitted = true;
+  }
+  if (oldGuild.ownerId !== newGuild.ownerId) {
+    client.emit("guildOwnerUpdate", oldGuild, newGuild);
+    emitted = true;
+  }
+  if (!oldGuild.partnered && newGuild.partnered) {
+    client.emit("guildPartnerAdd", newGuild);
+    emitted = true;
+  }
+  if (oldGuild.partnered && !newGuild.partnered) {
+    client.emit("guildPartnerRemove", newGuild);
+    emitted = true;
+  }
+  if (!oldGuild.verified && newGuild.verified) {
+    client.emit("guildVerificationAdd", newGuild);
+    emitted = true;
+  }
+  if (oldGuild.verified && !newGuild.verified) {
+    client.emit("guildVerificationRemove", newGuild);
+    emitted = true;
+  }
+  if (!emitted) {
+    client.emit("unhandledGuildUpdate", oldGuild, newGuild);
+  }
+}
+var init_guildUpdate = __esm({
+  "src/handler/events/guildUpdate.ts"() {
+    "use strict";
+    init_cjs_shims();
+  }
+});
+
+// src/handler/events/presenceUpdate.ts
+async function handlePresenceUpdateEvent(client, oldPresence, newPresence) {
+  if (!oldPresence)
+    return;
+  let emitted = false;
+  if (oldPresence.status !== "offline" && newPresence.status === "offline") {
+    client.emit("guildMemberOffline", newPresence.member, oldPresence.status);
+    emitted = true;
+  }
+  if (oldPresence.status === "offline" && newPresence.status !== "offline") {
+    client.emit("guildMemberOnline", newPresence.member, newPresence.status);
+    emitted = true;
+  }
+  if (!emitted) {
+    client.emit("unhandledPresenceUpdate", oldPresence, newPresence);
+  }
+}
+var init_presenceUpdate = __esm({
+  "src/handler/events/presenceUpdate.ts"() {
+    "use strict";
+    init_cjs_shims();
+  }
+});
+
+// src/handler/events/roleUpdate.ts
+async function handleRoleUpdateEvent(client, oldRole, newRole) {
+  let emitted = false;
+  if (oldRole.rawPosition !== newRole.rawPosition) {
+    client.emit("rolePositionUpdate", newRole, oldRole.rawPosition, newRole.rawPosition);
+    emitted = true;
+  }
+  if (oldRole.permissions.bitfield !== newRole.permissions.bitfield) {
+    client.emit("rolePermissionsUpdate", newRole, oldRole.permissions.bitfield, newRole.permissions.bitfield);
+    emitted = true;
+  }
+  if (!emitted) {
+    client.emit("unhandledRoleUpdate", oldRole, newRole);
+  }
+}
+var init_roleUpdate = __esm({
+  "src/handler/events/roleUpdate.ts"() {
+    "use strict";
+    init_cjs_shims();
+  }
+});
+
+// src/handler/events/userUpdate.ts
+async function handleUserUpdateEvent(client, oldUser, newUser) {
+  let emitted = false;
+  if (!oldUser.partial) {
+    if (oldUser.displayAvatarURL() !== newUser.displayAvatarURL()) {
+      client.emit("userAvatarUpdate", newUser, oldUser.displayAvatarURL(), newUser.displayAvatarURL());
+      emitted = true;
+    }
+    if (oldUser.username !== newUser.username) {
+      client.emit("userUsernameUpdate", newUser, oldUser.username, newUser.username);
+      emitted = true;
+    }
+    if (oldUser.discriminator !== newUser.discriminator) {
+      client.emit("userDiscriminatorUpdate", newUser, oldUser.discriminator, newUser.discriminator);
+      emitted = true;
+    }
+    if (oldUser.flags !== newUser.flags) {
+      client.emit("userFlagsUpdate", newUser, oldUser.flags, newUser.flags);
+      emitted = true;
+    }
+  }
+  if (!emitted) {
+    client.emit("unhandledUserUpdate", oldUser, newUser);
+  }
+}
+var init_userUpdate = __esm({
+  "src/handler/events/userUpdate.ts"() {
+    "use strict";
+    init_cjs_shims();
+  }
+});
+
+// src/handler/events/voiceStateUpdate.ts
+async function handleVoiceStateUpdateEvent(client, oldState, newState) {
+  let emitted = false;
+  const oldMember = oldState.member;
+  const newMember = newState.member;
+  if (!oldState.channel && newState.channel) {
+    client.emit("voiceChannelJoin", newMember, newState.channel);
+    emitted = true;
+  }
+  if (oldState.channel && !newState.channel) {
+    client.emit("voiceChannelLeave", newMember, oldState.channel);
+    emitted = true;
+  }
+  if (oldState.channel && newState.channel && oldState.channel.id !== newState.channel.id) {
+    client.emit("voiceChannelSwitch", newMember, oldState.channel, newState.channel);
+    emitted = true;
+  }
+  if (!oldState.mute && newState.mute) {
+    const muteType = newState.selfMute ? "self-muted" : "server-muted";
+    client.emit("voiceChannelMute", newMember, muteType);
+    emitted = true;
+  }
+  if (oldState.mute && !newState.mute) {
+    const muteType = oldState.selfMute ? "self-muted" : "server-muted";
+    client.emit("voiceChannelUnmute", newMember, muteType);
+    emitted = true;
+  }
+  if (!oldState.deaf && newState.deaf) {
+    const deafType = newState.selfDeaf ? "self-deafed" : "server-v";
+    client.emit("voiceChannelDeaf", newMember, deafType);
+    emitted = true;
+  }
+  if (oldState.deaf && !newState.deaf) {
+    const deafType = oldState.selfDeaf ? "self-deafed" : "server-v";
+    client.emit("voiceChannelUndeaf", newMember, deafType);
+    emitted = true;
+  }
+  if (!oldState.streaming && newState.streaming) {
+    client.emit("voiceStreamingStart", newMember, newState.channel);
+    emitted = true;
+  }
+  if (oldState.streaming && !newState.streaming) {
+    client.emit("voiceStreamingStop", newMember, newState.channel);
+    emitted = true;
+  }
+  if (!emitted) {
+    client.emit("unhandledVoiceStateUpdate", oldState, newState);
+  }
+}
+var init_voiceStateUpdate = __esm({
+  "src/handler/events/voiceStateUpdate.ts"() {
+    "use strict";
+    init_cjs_shims();
+  }
+});
+
+// src/handler/events/messageUpdate.ts
+async function handleMessageUpdateEvent(client, oldMessage, newMessage) {
+  let emitted = false;
+  if (!oldMessage.partial && !newMessage.partial) {
+    if (!oldMessage.pinned && newMessage.pinned) {
+      client.emit("messagePinned", newMessage);
+      emitted = true;
+    }
+    if (oldMessage.content !== newMessage.content) {
+      client.emit("messageContentEdited", newMessage, oldMessage.content, newMessage.content);
+      emitted = true;
+    }
+  }
+  if (!emitted) {
+    client.emit("unhandledMessageUpdate", oldMessage, newMessage);
+  }
+}
+var init_messageUpdate = __esm({
+  "src/handler/events/messageUpdate.ts"() {
+    "use strict";
+    init_cjs_shims();
+  }
+});
+
+// src/handler/events/guildChannel.ts
+async function handleChannelUpdateEvent(client, oldChannel, newChannel) {
+  let emitted = false;
+  if (Object.prototype.hasOwnProperty.call(oldChannel, "guild")) {
+    if (oldChannel.permissionOverwrites !== newChannel.permissionOverwrites) {
+      client.emit(
+        "guildChannelPermissionsUpdate",
+        newChannel,
+        oldChannel.permissionOverwrites,
+        newChannel.permissionOverwrites
+      );
+      emitted = true;
+    }
+    if (oldChannel.type === import_discord.ChannelType.GuildText && oldChannel.topic !== newChannel.topic) {
+      client.emit(
+        "guildChannelTopicUpdate",
+        newChannel,
+        oldChannel.topic,
+        newChannel.topic
+      );
+      emitted = true;
+    }
+  }
+  if (!emitted) {
+    client.emit("unhandledGuildChannelUpdate", oldChannel, newChannel);
+  }
+}
+var import_discord;
+var init_guildChannel = __esm({
+  "src/handler/events/guildChannel.ts"() {
+    "use strict";
+    init_cjs_shims();
+    import_discord = require("discord.js");
+  }
+});
+
+// src/handler/events/threadUpdate.ts
+async function handleThreadChannelUpdateEvent(client, oldThread, newThread) {
+  let emitted = false;
+  if (Object.prototype.hasOwnProperty.call(oldThread, "guild")) {
+    if (oldThread.archived !== newThread.archived) {
+      client.emit("threadStateUpdate", oldThread, newThread);
+      emitted = true;
+    }
+    if (oldThread.name !== newThread.name) {
+      client.emit("threadNameUpdate", newThread, oldThread.name, newThread.name);
+      emitted = true;
+    }
+    if (oldThread.locked !== newThread.locked) {
+      client.emit("threadLockStateUpdate", oldThread, newThread);
+      emitted = true;
+    }
+    if (oldThread.rateLimitPerUser !== newThread.rateLimitPerUser) {
+      client.emit(
+        "threadRateLimitPerUserUpdate",
+        newThread,
+        oldThread.rateLimitPerUser,
+        newThread.rateLimitPerUser
+      );
+      emitted = true;
+    }
+    if (oldThread.autoArchiveDuration !== newThread.autoArchiveDuration) {
+      client.emit(
+        "threadAutoArchiveDurationUpdate",
+        newThread,
+        oldThread.autoArchiveDuration,
+        newThread.autoArchiveDuration
+      );
+      emitted = true;
+    }
+  }
+  if (!emitted) {
+    client.emit("unhandledThreadUpdate", oldThread, newThread);
+  }
+}
+var init_threadUpdate = __esm({
+  "src/handler/events/threadUpdate.ts"() {
+    "use strict";
+    init_cjs_shims();
+  }
+});
+
+// src/handler/events/index.ts
+var init_events = __esm({
+  "src/handler/events/index.ts"() {
+    "use strict";
+    init_cjs_shims();
+    init_guildMemberUpdate();
+    init_guildUpdate();
+    init_presenceUpdate();
+    init_roleUpdate();
+    init_userUpdate();
+    init_voiceStateUpdate();
+    init_messageUpdate();
+    init_guildChannel();
+    init_threadUpdate();
+  }
+});
+
+// src/extended-events.ts
+var require_extended_events = __commonJS({
+  "src/extended-events.ts"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var import_discord2 = require("discord.js");
+    init_events();
+    var eventRegistered = false;
+    module2.exports = async (client, options) => {
+      if (eventRegistered)
+        return;
+      eventRegistered = true;
+      const intents = new import_discord2.IntentsBitField(client.options.intents);
+      if (intents.has(import_discord2.IntentsBitField.Flags.Guilds)) {
+        if (options?.debug)
+          console.log("channelUpdate event handler registered.");
+        client.on("channelUpdate", (oldChannel, newChannel) => {
+          handleChannelUpdateEvent(client, oldChannel, newChannel);
+        });
+        if (options?.debug)
+          console.log("guildUpdate event handler registered.");
+        client.on("guildUpdate", (oldGuild, newGuild) => {
+          handleGuildUpdateEvent(client, oldGuild, newGuild);
+        });
+        if (options?.debug)
+          console.log("roleUpdate event handler registered.");
+        client.on("roleUpdate", (oldRole, newRole) => {
+          handleRoleUpdateEvent(client, oldRole, newRole);
+        });
+        if (options?.debug)
+          console.log("threadUpdate event handler registered.");
+        client.on("threadUpdate", (oldThread, newThread) => {
+          handleThreadChannelUpdateEvent(client, oldThread, newThread);
+        });
+      } else {
+        if (options?.debug)
+          console.log(
+            "channelUpdate, guildUpdate, roleUpdate and threadUpdate event handlers not registered (missing Guilds intent)."
+          );
+      }
+      if (intents.has(import_discord2.IntentsBitField.Flags.GuildMembers)) {
+        if (options?.debug)
+          console.log("guildMemberUpdate event handler registered.");
+        client.on("guildMemberUpdate", (oldMember, newMember) => {
+          handleGuildMemberUpdateEvent(client, oldMember, newMember);
+        });
+        if (options?.debug)
+          console.log("userUpdate event handler registered.");
+        client.on("userUpdate", (oldUser, newUser) => {
+          handleUserUpdateEvent(client, oldUser, newUser);
+        });
+      } else {
+        if (options?.debug)
+          console.log("guildMemberUpdate, userUpdate event handlers not registered (missing GuildMembers intent).");
+      }
+      if (intents.has(import_discord2.IntentsBitField.Flags.GuildMessages && import_discord2.IntentsBitField.Flags.MessageContent)) {
+        if (options?.debug)
+          console.log("messageUpdate event handler registered.");
+        client.on("messageUpdate", (oldMessage, newMessage) => {
+          handleMessageUpdateEvent(client, oldMessage, newMessage);
+        });
+      } else {
+        if (options?.debug)
+          console.log("messageUpdate event handler not registered (missing GuildMessages or MessageContent intent).");
+      }
+      if (intents.has(import_discord2.IntentsBitField.Flags.GuildPresences)) {
+        if (options?.debug)
+          console.log("presenceUpdate event handler registered.");
+        client.on("presenceUpdate", (oldPresence, newPresence) => {
+          handlePresenceUpdateEvent(client, oldPresence, newPresence);
+        });
+      } else {
+        if (options?.debug)
+          console.log("presenceUpdate event handler not registered (missing GuildPresences intent).");
+      }
+      if (intents.has(import_discord2.IntentsBitField.Flags.GuildVoiceStates)) {
+        if (options?.debug)
+          console.log("voiceStateUpdate event handler registered.");
+        client.on("voiceStateUpdate", (oldState, newState) => {
+          handleVoiceStateUpdateEvent(client, oldState, newState);
+        });
+      } else {
+        if (options?.debug)
+          console.log("voiceStateUpdate event handler not registered (missing GuildVoiceStates intent).");
+      }
+    };
+  }
+});
+
+// src/index.ts
+init_cjs_shims();
+var import_extended_events = __toESM(require_extended_events());
+module.exports = import_extended_events.default;

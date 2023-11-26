@@ -1,2 +1,35 @@
-# djskit
-A kit to easily handle your commands and events in your DiscordJS projects!
+<p align="center">
+<img src="./images/djskit.jpeg" alt="DJSKit - By Rtxeon" width="150px">
+</p>
+<br>
+<center>
+<h1>DJSKit</h1>
+<p>DJSKit - Elevate your Discord bot from ordinary to extraordinary with our versatile toolkit!</p>
+</center>
+<p align="center">
+
+[![downloadsBadge](https://img.shields.io/npm/dt/djskit?style=for-the-badge)](https://npmjs.com/discord-logs)
+[![versionBadge](https://img.shields.io/npm/v/djskit?style=for-the-badge)](https://npmjs.com/discord-logs)
+
+</p>
+
+<p align="center">
+ <a  href="https://nodei.co/npm/ultrax/"><img  src="https://nodei.co/npm/djskit.png?downloads=true&stars=true"  alt="NPM info"  /></a>
+ </p>
+
+## 📥 Install
+
+```
+$ npm install ultrax
+```
+
+# 🔐 License
+
+Distributed under the Apache 2.0 License. See [`LICENSE`](https://github.com/Rtxeon/djskit/blob/main/LICENSE) for more information.
+
+# 📢 Contact us
+
+In case you have idea's to improve the package, or maybe you found some bugs or you need help, you can contact us in our [`Discord Server`](https://discord.gg/tHvGtcyh6V)!
+
+<a  href="https://discord.gg/tHvGtcyh6V"><img  src="https://www.discord.com/api/guilds/1099308470127296573/widget.png?style=banner2"></a>
+
