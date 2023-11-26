@@ -20,7 +20,18 @@
 ## 📥 Install
 
 ```
-$ npm install ultrax
+$ npm install djskit
+```
+
+## 🧑‍💻 Troubleshooting
+
+You can enable debug to try to know why an event is not working:
+
+```js
+const logs = require('discord-logs');
+logs(client, {
+    debug: true
+});
 ```
 
 # 🧑 Credits

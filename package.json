@@ -1,6 +1,6 @@
 {
   "name": "djskit",
-  "version": "0.0.0-pre",
+  "version": "0.0.3-pre",
   "description": "DJSKit - Elevate your Discord bot from ordinary to extraordinary with our versatile toolkit!",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
