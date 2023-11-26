@@ -8,7 +8,7 @@
 </h1>
 </div>
 <p>DJSKit - Elevate your Discord bot from ordinary to extraordinary with our versatile toolkit!</p>
-<p>Website - <a href="https://djskit.js.org/">Click Here!</p>
+<p>Website - <a href="https://djskit.js.org/">Click Here!</a></p>
 </center>
 <p align="center">
 <a href="https://npmjs.com/djskit">
