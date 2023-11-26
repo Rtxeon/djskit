@@ -23,6 +23,9 @@
 $ npm install ultrax
 ```
 
+# 🧑 Credits
+[@Androz2091](https://github.com/Androz2091) - For The Extended Events
+
 # 🔐 License
 
 Distributed under the Apache 2.0 License. See [`LICENSE`](https://github.com/Rtxeon/djskit/blob/main/LICENSE) for more information.
