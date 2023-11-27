@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build:package": "tsup",
-    "build:docs": "npx typedoc"
+    "build:docs": "npx typedoc --plugin typedoc-material-theme --themeColor '#4752c4'"
   },
   "repository": {
     "type": "git",
