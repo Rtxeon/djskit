@@ -1,3 +1,3 @@
-export * from './extraEvents';
-export * from './createBin';
+export * from './extendedEvents';
+export * from './createSourceBin';
 export * from './sleep';

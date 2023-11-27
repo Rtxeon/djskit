@@ -11,20 +11,14 @@
 <p>Website - <a href="https://djskit.js.org/">Click Here!</a></p>
 </center>
 <p align="center">
-<a href="https://npmjs.com/djskit">
-  <img src="https://img.shields.io/npm/dt/djskit?style=for-the-badge" alt="downloadsBadge" />
-</a>
-<a href="https://npmjs.com/djskit">
-  <img src="https://img.shields.io/npm/v/djskit.svg?style=for-the-badge" alt="versionBadge" />
-</a>
-<a href="https://djskit.js.org/">
-<img src="https://img.shields.io/badge/DJSKit-Documentation-406dbc?style=for-the-badge" >
-</a>
+<a href="https://npmjs.com/djskit"><img src="https://img.shields.io/npm/dt/djskit?style=for-the-badge" alt="downloadsBadge" /></a>
+<a href="https://npmjs.com/djskit"><img src="https://img.shields.io/npm/v/djskit.svg?style=for-the-badge" alt="versionBadge" /></a>
+<a href="https://djskit.js.org/"><img src="https://img.shields.io/badge/DJSKit-Documentation-406dbc?style=for-the-badge" ></a>
 </p>
 
 <p align="center">
- <a  href="https://nodei.co/npm/djskit/"><img  src="https://nodei.co/npm/djskit.png?downloads=true&stars=true"  alt="NPM info"  /></a>
- </p>
+    <a  href="https://nodei/"><img  src="https://nodei.co/npm/djskit.svg?downloads=true&stars=true"  alt="NPM info"  /></a>
+</p>
 
 ## 📥 Install
 
@@ -32,11 +26,16 @@
 $ npm install djskit
 ```
 
-
+## 📚 Documentation
+Check out our [documentation](https://djskit.js.org/) for more information!
 
 ## 🧑‍💻 Troubleshooting
 
+### 📚 Extended Events
 You can enable debug to try to know why an event is not working:
+
+---
+<br>
 
 ```js
 const { extendedEvents } = require('djskit');
@@ -46,6 +45,7 @@ extendedEvents(client, {
 ```
 
 # 🧑 Credits
+
 [@Androz2091](https://github.com/Androz2091) - For The Extended Events
 
 # 🔐 License

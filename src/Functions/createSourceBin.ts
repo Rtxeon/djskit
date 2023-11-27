@@ -1,15 +1,16 @@
 import axios, { AxiosResponse } from 'axios';
-import { SourceBinOptions } from '../Types/types';
 
 /**
- * Bin code in a SourceBin
- * @param {string} code Code to put into the SourceBin
- * @returns {Promise<string>} The URL of the SourceBin
+ * @name createSourceBin
+ * @description Creates a SourceBin URL with the code provided.
+ * 
+ * @async
+ * @param {String} code The code to create the SourceBin with.
+ * @returns {Promise<string>} Returns a promise with SourceBin URL.
+ * @example const sourceBin = await createSourceBin('console.log("Hello World!")'); //https://sourceb.in/xxxxxx
  */
 
-export async function createSourceBin(Options: SourceBinOptions): Promise<string> {
-    const { code } = Options;
-
+export async function createSourceBin(code: String): Promise<string> {
     if (!code) throw new Error(`[Missing-Argument] Missing argument 'code' [Usage: createSourceBin(code)]`)
     if (typeof code !== 'string') throw new TypeError(`Expected type 'string', got '${typeof code}'`);
 

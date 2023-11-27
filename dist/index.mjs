@@ -420,10 +420,10 @@ var init_Events = __esm({
   }
 });
 
-// src/Utils/extended-events.ts
+// src/Utils/extraEvents.ts
 import { IntentsBitField } from "discord.js";
-var require_extended_events = __commonJS({
-  "src/Utils/extended-events.ts"(exports, module) {
+var require_extraEvents = __commonJS({
+  "src/Utils/extraEvents.ts"(exports, module) {
     "use strict";
     init_esm_shims();
     init_Events();
@@ -515,15 +515,14 @@ init_esm_shims();
 // src/Functions/index.ts
 init_esm_shims();
 
-// src/Functions/extraEvents.ts
+// src/Functions/extendedEvents.ts
 init_esm_shims();
-var import_extended_events = __toESM(require_extended_events());
+var import_extraEvents = __toESM(require_extraEvents());
 
-// src/Functions/createBin.ts
+// src/Functions/createSourceBin.ts
 init_esm_shims();
 import axios from "axios";
-async function createSourceBin(Options) {
-  const { code } = Options;
+async function createSourceBin(code) {
   if (!code)
     throw new Error(`[Missing-Argument] Missing argument 'code' [Usage: createSourceBin(code)]`);
   if (typeof code !== "string")
@@ -546,10 +545,19 @@ async function createSourceBin(Options) {
 
 // src/Functions/sleep.ts
 init_esm_shims();
-function sleep(options) {
-  return new Promise((resolve) => setTimeout(resolve, options.ms));
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
-var export_extendedEvents = import_extended_events.default;
+
+// src/typings.ts
+init_esm_shims();
+
+// src/Types/index.ts
+init_esm_shims();
+
+// src/Types/extendedEventsOptions.ts
+init_esm_shims();
+var export_extendedEvents = import_extraEvents.default;
 export {
   createSourceBin,
   export_extendedEvents as extendedEvents,

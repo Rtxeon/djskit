@@ -425,9 +425,9 @@ var init_Events = __esm({
   }
 });
 
-// src/Utils/extended-events.ts
-var require_extended_events = __commonJS({
-  "src/Utils/extended-events.ts"(exports, module2) {
+// src/Utils/extraEvents.ts
+var require_extraEvents = __commonJS({
+  "src/Utils/extraEvents.ts"(exports, module2) {
     "use strict";
     init_cjs_shims();
     var import_discord2 = require("discord.js");
@@ -518,7 +518,7 @@ var require_extended_events = __commonJS({
 var src_exports = {};
 __export(src_exports, {
   createSourceBin: () => createSourceBin,
-  extendedEvents: () => import_extended_events.default,
+  extendedEvents: () => import_extraEvents.default,
   sleep: () => sleep
 });
 module.exports = __toCommonJS(src_exports);
@@ -527,15 +527,14 @@ init_cjs_shims();
 // src/Functions/index.ts
 init_cjs_shims();
 
-// src/Functions/extraEvents.ts
+// src/Functions/extendedEvents.ts
 init_cjs_shims();
-var import_extended_events = __toESM(require_extended_events());
+var import_extraEvents = __toESM(require_extraEvents());
 
-// src/Functions/createBin.ts
+// src/Functions/createSourceBin.ts
 init_cjs_shims();
 var import_axios = __toESM(require("axios"));
-async function createSourceBin(Options) {
-  const { code } = Options;
+async function createSourceBin(code) {
   if (!code)
     throw new Error(`[Missing-Argument] Missing argument 'code' [Usage: createSourceBin(code)]`);
   if (typeof code !== "string")
@@ -558,9 +557,18 @@ async function createSourceBin(Options) {
 
 // src/Functions/sleep.ts
 init_cjs_shims();
-function sleep(options) {
-  return new Promise((resolve) => setTimeout(resolve, options.ms));
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+// src/typings.ts
+init_cjs_shims();
+
+// src/Types/index.ts
+init_cjs_shims();
+
+// src/Types/extendedEventsOptions.ts
+init_cjs_shims();
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   createSourceBin,

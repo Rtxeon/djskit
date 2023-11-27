@@ -1,23 +1,40 @@
 import { Client } from 'discord.js';
 
-declare const _default: (client: Client, options?: {
+/**
+ * @name extendedEventsOptions
+ * @description Options for the extendedEvents function. (Optional)
+ *
+ * @export
+ * @interface extendedEventsOptions
+ * @typedef {extendedEventsOptions}
+*/
+interface extendedEventsOptions {
     debug?: boolean;
-}) => Promise<void>;
+}
 
-interface SourceBinOptions {
-    code: string;
-}
-interface SleepOptions {
-    ms: number;
-}
+declare const _default: (client: Client, options?: extendedEventsOptions) => Promise<void>;
 
 /**
- * Bin code in a SourceBin
- * @param {string} code Code to put into the SourceBin
- * @returns {Promise<string>} The URL of the SourceBin
+ * @name createSourceBin
+ * @description Creates a SourceBin URL with the code provided.
+ *
+ * @async
+ * @param {String} code The code to create the SourceBin with.
+ * @returns {Promise<string>} Returns a promise with SourceBin URL.
+ * @example const sourceBin = await createSourceBin('console.log("Hello World!")'); //https://sourceb.in/xxxxxx
  */
-declare function createSourceBin(Options: SourceBinOptions): Promise<string>;
+declare function createSourceBin(code: String): Promise<string>;
 
-declare function sleep(options: SleepOptions): Promise<void>;
+/**
+ * @name sleep
+ * @description Make the code sleep for a certain amount of time which is provided.
+ *
+ * @async
+ * @param {number} ms The amount of time to sleep for.
+ * @returns {Promise<void>} Returns a promise with nothing.
+ *
+ * @example await sleep(1000); //Sleep for 1 second
+ */
+declare function sleep(ms: number): Promise<void>;
 
-export { createSourceBin, _default as extendedEvents, sleep };
+export { createSourceBin, _default as extendedEvents, type extendedEventsOptions, sleep };

@@ -10,10 +10,11 @@ import {
     handleChannelUpdateEvent,
     handleThreadChannelUpdateEvent,
 } from '../Handler/Events';
+import { extendedEventsOptions } from '../typings';
 
 let eventRegistered = false;
 
-export = async (client: Client, options?: { debug?: boolean }) => {
+export = async (client: Client, options?: extendedEventsOptions) => {
     if (eventRegistered) return;
     eventRegistered = true;
 
